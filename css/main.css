@@ -1,9 +1,10 @@
 @import url("pygment_highlights.css");
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700);
 
 /* --- General --- */
 
 body {
-  font-family: 'Lora', 'Times New Roman', serif;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 18px;
   color: #404040;
   position: relative;
