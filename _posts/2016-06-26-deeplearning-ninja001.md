@@ -39,7 +39,7 @@ if color is red:
  
  > "A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E" __Tom M. Mitchell
 
-즉, 어떠한 태스크(T)에 대해 꾸준한 경험(E)을 통하여 그 T에 대한 성능(P)를 높이는 것, 이것이 기계학습이라고 할 수 있다.[[나무위키](https://namu.wiki/w/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5)]
+머신러닝의 정의: 즉, 어떠한 태스크(T)에 대해 꾸준한 경험(E)을 통하여 그 T에 대한 성능(P)를 높이는 것, 이것이 기계학습이라고 할 수 있다.[[나무위키](https://namu.wiki/w/%EA%B8%B0%EA%B3%84%ED%95%99%EC%8A%B5)]
 
 ---
 
@@ -73,12 +73,15 @@ tensor3 = [[1,2,3],
 
 TensorFlow라는 이름에 이제 flow가 남아있습니다. 눈치 채셨겠지만 TensorFlow는 이 Tensor의 흐름(Flow)을 요리조리 쉽고 멋지게 가지고 놀 수 있게해주는 라이브러리 입니다. 이제 TensorFlow의 로고가 다르게 보이실 겁니다. Flow 는 뒤에 graph에서 한 번더 이야기 하겠습니다.
 
- 잠시 소프트웨어적인 면말고 하드웨어쪽을 잠시 보겠습니다. 이런 Tensor들의 연산에 적합한 하드웨어는 CPU 보다는 GPU(Graphics Processing Unit)입니다. 그래서 본격적으로 딥러닝을 시작하시게되면 필수적으로 GPU가 필요하실 것 입니다. 이외에도 최근에 구글이 머신러닝을 위해 만든 TPU(Tensor Processing Unit)라는 것도 있습니다. 이세돌과 바둑을 둔 알파고도 이 TPU를 사용했었다고 합니다. 아래사진은 TPU 입니다.
+ 이런 다차원 array인 Tensor들의 연산에 적합한 하드웨어는 무엇일까요? CPU 보다는 GPU(Graphics Processing Unit)입니다 훨씬 빠르게 Tensor들의 연산을 실행 할 수 있습니다. 그래서 본격적으로 딥러닝을 시작하시게되면 필수적으로 GPU가 필요하실 것 입니다. 이외에도 최근에 구글은 머신러닝을 위해 만든 TPU(Tensor Processing Unit)를 만들어버렸습니다. 구글 검색, 구글 스트릿뷰 등 많은 영역에서 이미 사용되어왔고 최근에는 이세돌과 바둑을 둔 알파고도 이 TPU를 사용했었다고 합니다. 아래사진은 TPU 입니다.
 
 ![Tensor Processing Unit](https://3.bp.blogspot.com/-Pv1QyUVlX20/Vz_iPo-qnQI/AAAAAAAACq8/mgLCTGT5M3QeM4nHZZBeiZp78GmuTWYowCLcB/s1600/tpu.png)
 
 ## 왜 TensorFlow 인가?
 
+  
+  
+  
 1. 구글이 만들고 사용한다.
 2. Python을 통해서 사용 할 수 있다.
 
