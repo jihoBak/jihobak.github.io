@@ -53,13 +53,10 @@ if color is red:
 - 둘째로 과거와 달리 고성능 컴퓨팅환경(cpu, gpu, cloud)을 비교적 저렴한 가격에 보다 쉽게 구축 할 수 있어서 경제성있는 컴퓨팅을 할 수 있게 되었습니다. 예를들어 컴퓨팅 스펙이 바쳐주지 않아서 1년정도 학습시간이 걸린다면... 안되겠죠.
 
 
-## 이어서 바로 TensorFlow를 알아 보도록 하겠습니다.
+### 이어서 바로 TensorFlow를 알아 보도록 하겠습니다.  
 
 
-
-
-
-![tensorflow_logo](https://upload.wikimedia.org/wikipedia/en/7/74/TensorFlow.png)
+   ![tensorflow_logo](https://upload.wikimedia.org/wikipedia/en/7/74/TensorFlow.png)
 
 
  많은 데이터를 다뤄야하니 많은데이터를 효과적으로 다룰 자료구조가 필요하겠죠? TensorFlow에서는 이를 Tensor라고 부릅니다. TensorFlow에서 Tensor는 다차원의 array, list라고 생각하시면 됩니다. 간단하게 말하자면 행렬이라고 생각하시면 될 것 같습니다(You can think of a TensorFlow tensor as an n-dimensional array or list).
@@ -142,20 +139,6 @@ Python과 Tensorflow를 이어주는 일종의 연결고리는 무엇일까요? 
 
  Python은 위 처럼 operation들이 바로바로 실행이 된다고 하면 tensorflow에서 코드들은 이렇게 바로바로 작동하지 않습니다.
  
- ```python
->>> graph = []
->>> operation1 = [ 'a = 1']
->>> operation1
-['a = 1']
->>> operation2 = [ 'b = 2']
->>> operation3 = [ ‘c = a + b’]
->>> graph.append(operation1)
->>> graph
-[['a = 1']]
->>> graph.append(operation2)
->>> graph
-[['a = 1'], ['b = 2']]
-```
 
 ### Tensorflow는 어떨까요
 
@@ -209,9 +192,35 @@ attr {
 ```
 
 무슨 JSON 비슷한게 적혀져 나오는데 이것이 바로 나중에 Session 아래에서 실행될때 tensorflow가 해석할 부분이자 graph라는 계획서에 담겨 나중에 처리될 계획들의 일 부분입니다. 이 JSON과 비슷하게 생긴것은 [Protocol buffer](https://developers.google.com/protocol-buffers/)(구글이 버전의 JSON?)
-라고 합니다. Tensorflow는 내부적으로 이 Protocol buffer을 사용하구요.
+라고 합니다. Tensorflow는 내부적으로 이 Protocol buffer을 사용하구요.   
 
+자 이제 input을 출력해보겠습니다.(Session 아래에서만 실행됩니다)
+   
 ```python
->>> <tf.Tensor 'Const:0' shape=() dtype=float32>
+>>>input
+<tf.Tensor 'Const:0' shape=() dtype=float32>
+>>> sess = tf.Session()
+>>> sess.run(input)
+1.0
 ```
+단순 python 의 출력 코드가아니라 tensorflow의 graph가 실행 된 것 입니다. R계의 초고수 Hadley Wickham의 말을 가져와보겠습니다. 아래 그림이 조금 이해가 되시나요? Tensorflow를 사용하실 수록 점점 이 그림에대한 이해도가 높아지실 것 입니다.
 
+// 해들리 위컴 사진
+
+
+
+## '초간단' Tensorflow 뉴런 만들어보기
+
+
+일단 잠깐 뉴런에대해서 살펴보겠습니다. 코딩하는데 뭐 계속 뉴런, 뉴런 할까요? 처음에 설명한 머신러닝을 보면 결국 머신러닝은 데이터를 입력받아 학습해서 원하는 출력값을 만들어내는 함수로 볼 수있는데요. 뉴런도 가만히 살펴보니 단순화 시키면 일종의 input을 받아서 output을 출력하는 함수(Function)로 볼 수 있다는 것입니다. 그런데 실제 머신러닝에서 필요한 입력과 함수가 한두개의 일까요? 
+
+//심플사진
+
+ 아닙니다. 수많은 입력값들을 수많은 함수들을 통해서 처리해야하는데요, 뉴런이 함수와 비슷하니 이 함수들을 우리 몸의 신경망처럼 들을 복잡하게 연결시켜놓으면 어떨까? 하고 만들어넨 머신러닝이 딥러닝입니다. 
+
+// 복잡사진   
+
+
+  그러나 여기서 tensorflow 코드로 만들어볼 뉴런은 입력이 하나 출력이 하나인 초간단 tensoflow 뉴런입니다. 
+  
+  
