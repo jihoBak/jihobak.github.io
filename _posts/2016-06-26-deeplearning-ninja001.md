@@ -55,8 +55,10 @@ if color is red:
 
 ### 이어서 바로 TensorFlow를 알아 보도록 하겠습니다.  
 
-
-   ![tensorflow_logo](https://upload.wikimedia.org/wikipedia/en/7/74/TensorFlow.png)
+  
+  
+  
+  ![tensorflow_logo](https://upload.wikimedia.org/wikipedia/en/7/74/TensorFlow.png)
 
 
  많은 데이터를 다뤄야하니 많은데이터를 효과적으로 다룰 자료구조가 필요하겠죠? TensorFlow에서는 이를 Tensor라고 부릅니다. TensorFlow에서 Tensor는 다차원의 array, list라고 생각하시면 됩니다. 간단하게 말하자면 행렬이라고 생각하시면 될 것 같습니다(You can think of a TensorFlow tensor as an n-dimensional array or list).
@@ -110,7 +112,7 @@ Python과 Tensorflow를 이어주는 일종의 연결고리는 무엇일까요? 
  
  // 내가그린 그림.
  
-이 operation이 정의된 부분을 node라고 부르고 node와 node사이를 잇는 부분을 edge, 그리고 이 edge 안으로는 데이터들 즉 Tensor들이 왔다 갔다 하게 됩니다. 또, 이 operation이 다 담겨져있는 object를 graph라고 부릅니다. graph는 Tensor들을 어떻게 연산할 것인지 방법을 적은 종이가 빼곡히 들어있는 주머니와 같다고 할까요.(마치 앞에서 여러 데이터들을 Tensor로 담았던 것 처럼 이 여러 연산들을 graph라는 주머니에 담아버렸다고 저는 이해하고있습니다.) 이 graph들을 만드는 것을 위해서 말한 TensorFlow의 Flow라고 볼 수 있습니다. 마지막으로 이 graph 속 operations들은 Session이라는 공간 아래에서 한 번에 실행 됩니다. 
+이 operation이 정의된 부분을 node라고 부르고 node와 node사이를 이어진 부분을 edge, 그리고 이 edge 안으로는 데이터들 즉 Tensor들이 왔다 갔다 하게 됩니다. 또, 이 operation이 다 담겨져있는 object를 graph라고 부릅니다. graph는 Tensor들을 어떻게 연산할 것인지 방법을 적은 종이가 빼곡히 들어있는 주머니와 같다고 할까요.(마치 앞에서 여러 데이터들을 Tensor로 담았던 것 처럼 이 여러 연산들을 graph라는 주머니에 담아버렸다고 저는 이해하고있습니다.) 이 graph들을 만드는 것을 위해서 말한 TensorFlow의 Flow라고 볼 수 있습니다. 마지막으로 이 graph 속 operations들은 Session이라는 공간 아래에서 한 번에 실행 됩니다. 
  
 
 이처럼 우리가 해야할 task들을 operation 덩어리들(graph)로 적어주면 나중에 tensorflow 라이브러리가 이 operations 들을 다른 언어로 바꾸어서 다른 device에서 실행하는 등의 여러 복잡한 처리들을 실행하고 관리하는데 훨씬 편리할 것 입니다. 
