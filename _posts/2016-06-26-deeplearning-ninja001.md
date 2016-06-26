@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: DeepLearning Ninja001
 subtitle: Hello Tensorflow
 date: 2016-6-26
