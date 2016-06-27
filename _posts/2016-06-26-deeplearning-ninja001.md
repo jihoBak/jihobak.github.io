@@ -483,7 +483,7 @@ for op_input in last_operation.inputs: print(op_input)
    ![operation_node](https://jihobak.github.io/img/deeplearningninja/operation_node.png)   
    
    
-   주의 해야 할 것이 하나 더 있습니다. tensorflow에서 tf.Variable 같은 값이 변할 수 있는 변수를 선언을 하면 항상 Session 시작전에 graph에 들어있는 모든 변수들을 초기화해줘야 한다는 것입니다. 실제로 tf.Variable()로 선언을 했던 weight을 살펴보면 초기화전에 weight 을 보면 지정해준 0.8 과 달리 차이가 조금 나 있습니다.   
+   주의 해야 할 것이 하나 더 있습니다. tensorflow에서 tf.Variable 같은 값이 변할 수 있는 변수를 선언을 하면 항상 Session 시작전에 graph에 들어있는 모든 변수들을 초기화해줘야 한다는 것입니다. 실제로 tf.Variable()로 선언을 했던 weight을 살펴보면 초기화전에 weight 을 보면 0.800000011920929로 0.8 과 달리 차이가 조금 나 있습니다.   
    
    
    
