@@ -540,8 +540,8 @@ see.run(output_value)
 
   
   
-  
   텐서보드를 활용해 저희가 만든 뉴런도 시각화 해보겠습니다.   
+  
   
   
   ![tensorboard_sample](https://jihobak.github.io/img/deeplearningninja/tensorboard_sample.png)
