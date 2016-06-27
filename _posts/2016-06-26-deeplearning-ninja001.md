@@ -208,7 +208,7 @@ tensor3 = [[1,2,3],  # 2-dimensional
    
    
    위 슬라이드는 Tensorflow의 큰 구조를 보여주고 있습니다. 보시면 Python이 **TensorFlow Core**을 사용할 수있게 해주는 API역할을 하고 있습니다.   
-   왜 이럴까요? Deep Learning의 Deep이 괜히 Deep 이 아니겠죠? (deep —> 복잡하다) 복잡하고 많은 처리가 필요한 Deep learning에서 단순히 script언어인 Python만으로 해결되긴 어려울 것입니다. 그래서 여러 Task들을  Python으로 코딩해놓으면 Tensorflow가 내부적으로 다른 언어로 바꾸어 실행하기도하고 또 이를 필요에따라 여러 CPU 또는 GPU에서 실행이 되어야 할 때가 있는데 이 과정도 Tensorflow가 쉽게 처리하도록 해줍니다.
+   왜 이럴까요? Deep Learning의 Deep이 괜히 Deep 이 아니겠죠? (deep —> 복잡하다) 복잡하고 많은 처리가 필요한 Deep learning에서 단순히 script언어인 Python만으로 해결되긴 어려울 것입니다. 그래서 여러 Task들을  Python으로 코딩해놓으면 Tensorflow가 내부적으로 다른 언어로 바꾸어 실행하기도하고 또 이를 필요에따라 여러 CPU 또는 GPU에서 실행이 되어야 할 때가 있는데 이 과정도 Tensorflow가 쉽게 처리하도록 해줍니다.(**Python으로 잘 추상화 되어있다**)
    
    
  1. 딥러닝을 하기 위해서 해결해야할 task들을 수 많은 변수들과 연산들을 이용해서 코딩해야하고
