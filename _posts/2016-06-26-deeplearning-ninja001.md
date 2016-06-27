@@ -717,7 +717,7 @@ for i in range(100):
    최종 소스 입니다.
    
    
- ```python
+```python
  
  
 import tensorflow as tf
@@ -742,8 +742,10 @@ for i in range(100):
     summary_writer.add_summary(sess.run(summaries), i)
     sess.run(train_step)
  
+```   
+
+
  
- ```
  ---
   
   
