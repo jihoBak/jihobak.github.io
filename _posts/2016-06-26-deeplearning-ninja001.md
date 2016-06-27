@@ -28,7 +28,6 @@ date: 2016-6-26
    
    
 	- 머신러닝, 딥러닝이란?
-    
     - data-driven approach, 머신러닝 왜지금 핫한가?   
     
 
@@ -37,7 +36,6 @@ date: 2016-6-26
    
    
 	- TensorFlow 특징(graph, Session)
-    
     - TensorBoard로 사용해보기
        
        
@@ -48,7 +46,6 @@ date: 2016-6-26
    
    
 	- 코딩하는데, 생물시간도 아니고 왜 뉴런인가?
-    
     - 뉴런 학습시키기, forwardpropagation 과 backpropagation
     
     
