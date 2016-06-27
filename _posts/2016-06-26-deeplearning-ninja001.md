@@ -5,9 +5,11 @@ title: DeepLearning Ninja001
 subtitle: Hello Tensorflow
 date: 2016-6-26
 ---
-# Hello Tensorflow
+# Hello Tensorflow   
 
-‘Big data’에 이어 ‘(Machine, Deep) Learning’ 라는 단어가 요즘에 엄청 뜨거운 것 같습니다. 얼마 전 Tensorflow-KR의 행사에 참가했었을때 사람들로 가득찬 구글 캠퍼스를 볼 수 있었습니다.( 8월에 곧 열릴 Pycon 세션 목록만 보더라도 머신러닝과 딥러닝 세션이 작년에 비해 엄청 많다는… ) 얼마 안되었습니다만, 저는 현재 혼자서 머신러닝을 공부하고 있습니다 (힘들어요 ㅜㅜ).
+
+   
+   ‘Big data’에 이어 ‘(Machine, Deep) Learning’ 라는 단어가 요즘에 엄청 뜨거운 것 같습니다. 얼마 전 Tensorflow-KR의 행사에 참가했었을때 사람들로 가득찬 구글 캠퍼스를 볼 수 있었습니다.( 8월에 곧 열릴 Pycon 세션 목록만 보더라도 머신러닝과 딥러닝 세션이 작년에 비해 엄청 많다는… ) 얼마 안되었습니다만, 저는 현재 혼자서 머신러닝을 공부하고 있습니다 (힘들어요 ㅜㅜ).
    
    
    // 구글 캠퍼스 사진 첨부 
@@ -21,7 +23,7 @@ date: 2016-6-26
 
    
    
-- 머신러닝?
+- 머신러닝, 딥러닝?
 
 - 이름만 알아도 반은 안다.Tensor 와 Flow를 알아보자
 	- TensorFlow 특징(graph, Session)
@@ -29,7 +31,7 @@ date: 2016-6-26
     
 - TensofFlow로 간단한 뉴런 만들어보기
 	- 왜 뉴런인가?
-    - forwardpropagation 과 backpropagation
+    - 뉴런 학습시키기, forwardpropagation 과 backpropagation
     
     
   
@@ -384,7 +386,7 @@ for op_input in last_operation.inputs: print(op_input)
     
     
     
- 주의 해야 할 것이 하나 더 있습니다. tensorflow에서 tf.Variable 같은 어떤 변할 수도 있는 것을 선언을 하면 항상 Session 시작전에 graph에 들어있는 모든 변수들을 초기화해줘야 한다는 것입니다. 실제로 tf.Variable()로 선언을 했던 weight을 살펴보면 초기화전에 weight 을 보면 지정해준 0.8 과 달리 차이가 조금 나 있습니다.
+ 주의 해야 할 것이 하나 더 있습니다. tensorflow에서 tf.Variable 같은 값이 변할 수 있는 변수를 선언을 하면 항상 Session 시작전에 graph에 들어있는 모든 변수들을 초기화해줘야 한다는 것입니다. 실제로 tf.Variable()로 선언을 했던 weight을 살펴보면 초기화전에 weight 을 보면 지정해준 0.8 과 달리 차이가 조금 나 있습니다.
  
 
     
@@ -610,24 +612,32 @@ for i in range(100):
   
   
   
-  최대한 쉽게 써보려고 노력은 했는데 어떨지는 잘 모르겠습니다 ^^; 제가 설명을 잘 못한 부분이 있을 수도 있습니다. 혹시 오류나 지적할 부분이 있으시면 댓글로 알려주시면 감사하겠습니다 ! 그리고 혹시나 이 까지 다 해보시고 흥미를 가지셨다면 페이스북 그룹 TensorFlowKR을 운영하고 계시는 홍콩과기대 김성훈 교수님의 모두를 위한 머신러닝/딥러닝 강의보시길 추천드립니다! 처음 부터 많은 수식과 이론에... 자칫하면 학습의욕을 떨어질수도 있는데요 수학이나 컴퓨터 공학적인 지식이 없이도 쉽게 볼수 있도록 만드셨습니다. 저 또한 많이 배웠고 너무 감사드린다고 말씀드리고 싶습니다. 다음으로 너무나 유명한 바이두의 Andrew Ng님의 머신러닝 강의, 스탠포드 대학교의 cs231n, cs224d 마지막으로 또 하나의 강의를 추천 드린다면 MIT Patrick Henry Winston 교수님의 Artificial Intelligence 강의 입니다. 설명이 간결하고 쉽게 가르쳐 주십니다. 아래에 링크를 적어두겠습니다.
+  최대한 쉽게 써보려고 노력은 했는데 어떨지는 잘 모르겠습니다 ^^; 제가 설명을 잘 못한 부분이 있을 수도 있습니다. 혹시 오류나 지적할 부분이 있으시면 댓글로 알려주시면 감사하겠습니다 ! 그리고 혹시나 이 까지 다 해보시고 흥미를 가지셨다면 페이스북 그룹 TensorFlowKR을 운영하고 계시는 홍콩과기대 김성훈 교수님의 **모두를 위한 머신러닝/딥러닝** 강의를 보시길 추천드립니다!   
   
   
-  끝으로 읽어주셔서 정말 감사드립니다.
+  처음 부터 많은 수식과 이론에... 자칫하면 학습의욕을 떨어질수도 있는데요 수학이나 컴퓨터 공학적인 지식이 없이도 쉽게 볼수 있도록 만드셨습니다. 저 또한 많이 배웠고 너무 감사드린다고 말씀드리고 싶습니다. 다음으로 머신러닝의 전반을 다루는 너무나 유명한 바이두의 **Andrew Ng님의 머신러닝 강의**, 비전쪽을 다루는 스탠포드 대학교의 **cs231n**, NLP를 다루는 **cs224d**강의 마지막으로 또 하나의 강의를 추천 드린다면 MIT Patrick Henry Winston 교수님의 **Artificial Intelligence** 강의 입니다. 설명이 간결하고 쉽게 가르쳐 주십니다. 아래에 링크를 적어두겠습니다.
   
   
     
 - [모두를 위한 머신러닝/딥러닝 강의](http://hunkim.github.io/ml/)
+
 - [Machine Learning by Andrew Ng](https://www.coursera.org/learn/machine-learning/)
+
 - [CS231n: Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu/)
+
 - [CS224d: Deep Learning for Natural Language Processing](http://cs224d.stanford.edu/)
-- [Artificial Intelligence](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/)
-  
-  
 
+- [Artificial Intelligence](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/)   
 
-  
-  
-  
-  
+   
+   
+   
+   끝으로 읽어주셔서 정말 감사드립니다.   
+   
+---
 
+  p.s) 올해 9월부터 대구 경북대학교 근처에서 머신러닝, 딥러닝과 관련해서 스터디 모임을 만들어보고자 합니다. 장소는 후원을 받기로 확정이 되었습니다.  같이 으쌰으쌰해서 열심히 공부해보실분 댓글이나 페이스북 메세지로 연락을 주시면 감사하겠습니다 !! ^^;;
+  
+  
+  
+  
