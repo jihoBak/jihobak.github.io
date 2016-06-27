@@ -12,7 +12,7 @@ date: 2016-6-26
    ‘Big data’에 이어 ‘(Machine, Deep) Learning’ 라는 단어가 요즘에 엄청 뜨거운 것 같습니다. 얼마 전 Tensorflow-KR의 행사에 참가했었을때 사람들로 가득찬 구글 캠퍼스를 볼 수 있었습니다.( 8월에 곧 열릴 Pycon 세션 목록만 보더라도 머신러닝과 딥러닝 세션이 작년에 비해 엄청 많다는… ) 얼마 안되었습니다만, 저는 현재 혼자서 머신러닝을 공부하고 있습니다 (힘들어요 ㅜㅜ).
    
    
-   // 구글 캠퍼스 사진 첨부 
+![TensorflowKRconference](img/deeplearningninja/tensorflowkr1.jpeg)
    
    
    
