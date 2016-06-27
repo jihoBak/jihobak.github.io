@@ -16,6 +16,9 @@ baseurl: ""
 # Name of website
 title: Piper
 
+# disqus
+disqus: jihobak
+
 # Short description of your site
 description: The first step is to establish that something is possible; then probability will occur!
 
