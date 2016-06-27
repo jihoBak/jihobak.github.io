@@ -281,8 +281,7 @@ a = 1
 
 ```python
 
-
->>> import tensorflow as tf
+import tensorflow as tf
 
 
 ```
