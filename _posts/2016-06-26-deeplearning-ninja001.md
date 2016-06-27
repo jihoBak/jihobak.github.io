@@ -24,15 +24,31 @@ date: 2016-6-26
    
    
 - 머신러닝, 딥러닝
+   
+   
+   
 	- 머신러닝, 딥러닝이란?
-    - data-driven approach, 머신러닝 왜지금 핫한가?
+    
+    - data-driven approach, 머신러닝 왜지금 핫한가?   
+    
 
 - 이름만 알아도 반은 안다.Tensor 와 Flow를 알아보자
+   
+   
+   
 	- TensorFlow 특징(graph, Session)
+    
     - TensorBoard로 사용해보기
+       
+       
+       
     
 - TensofFlow로 간단한 뉴런 만들어보기
+   
+   
+   
 	- 코딩하는데, 생물시간도 아니고 왜 뉴런인가?
+    
     - 뉴런 학습시키기, forwardpropagation 과 backpropagation
     
     
