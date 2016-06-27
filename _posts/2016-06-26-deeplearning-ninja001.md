@@ -194,9 +194,9 @@ tensor3 = [[1,2,3],  # 2-dimensional
    
    
    
-- **Graph, node, edge   **
+- **Graph, node, edge**
 
-- **Session   **
+- **Session**
    
    
    
