@@ -4,6 +4,9 @@ published: true
 title: DeepLearning Ninja001
 subtitle: Hello Tensorflow
 date: 2016-6-26
+fb-img: 'https://colleensharen.files.wordpress.com/2013/09/deep-learning.jpg'
+bigimg: >-
+  https://sites.google.com/site/deeplearningsummerschool/_/rsrc/1421950769737/home/nn.jpeg
 ---
 # Hello Tensorflow   
 
