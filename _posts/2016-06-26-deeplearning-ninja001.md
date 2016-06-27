@@ -178,7 +178,7 @@ tensor3 = [[1,2,3],  # 2-dimensional
    
    
    
-   아래 슬라이드는 이번 GDG Global Summit 2016에서 [Introduction to TensorFlow](https://www.youtube.com/watch?v=SMltx_mHFsY) 세션에 나온 구글의 딥러닝 사용량 증가를 보여주는 슬라이드입니다. 링크를 걸어두었으니 딥러닝, 머신러닝이 처음이신분은 보시길 추천드립니다. ^^; 또한 세션 발표자는 Youtube에 [Machine Learning Recipes](https://www.youtube.com/watch?v=cKxRvEZd3Mw) 시리지를 업로드 하고있습니다. 이또한 보시길 추천 드립니다.
+   아래 슬라이드는 이번 GDG Global Summit 2016에서 [Introduction to TensorFlow](https://www.youtube.com/watch?v=SMltx_mHFsY) 세션에 나온 구글의 딥러닝 사용량 증가를 보여주는 슬라이드입니다. 링크를 걸어두었으니 딥러닝, 머신러닝이 처음이신분은 보시길 추천드립니다. ^^; 또한 세션 발표자는 Youtube에 [Machine Learning Recipes](https://www.youtube.com/watch?v=cKxRvEZd3Mw) 시리즈를 업로드 하고있습니다. 이 또한 보시길 추천 드립니다.
    
    
    
@@ -195,7 +195,6 @@ tensor3 = [[1,2,3],  # 2-dimensional
    
    
 - **Graph, node, edge**
-
 - **Session**
    
    
@@ -209,7 +208,7 @@ tensor3 = [[1,2,3],  # 2-dimensional
    
    
    위 슬라이드는 Tensorflow의 큰 구조를 보여주고 있습니다. 보시면 Python이 **TensorFlow Core**을 사용할 수있게 해주는 API역할을 하고 있습니다.   
-   왜 이럴까요? Deep Learning의 Deep이 괜히 Deep 이 아니겠죠? (deep —> 복잡하다) 복잡하고 많은 처리가 필요한 Deep learning에서 단순히 script언어인 Python만으로 해결되긴 어렵울것입니다. 그래서Task들을  Python으로 코딩해놓으면 Tensorflow가 내부적으로 다른 언어로 바꾸어 실행하기도하고 또 짜놓은 코드가 필요에따라 여러 CPU 또는 GPU에서 실행이 되어야 할 때가 있는데 이를 쉽게 해결해주는 Tensorflow가 역할을 해줍니다.
+   왜 이럴까요? Deep Learning의 Deep이 괜히 Deep 이 아니겠죠? (deep —> 복잡하다) 복잡하고 많은 처리가 필요한 Deep learning에서 단순히 script언어인 Python만으로 해결되긴 어려울 것입니다. 그래서 여러 Task들을  Python으로 코딩해놓으면 Tensorflow가 내부적으로 다른 언어로 바꾸어 실행하기도하고 또 이를 필요에따라 여러 CPU 또는 GPU에서 실행이 되어야 할 때가 있는데 이 과정도 Tensorflow가 쉽게 처리하도록 해줍니다.
    
    
  1. 딥러닝을 하기 위해서 해결해야할 task들을 수 많은 변수들과 연산들을 이용해서 코딩해야하고
@@ -218,7 +217,8 @@ tensor3 = [[1,2,3],  # 2-dimensional
  
  3. 이를 여러 device(cpu, gpu…) 에서 실행이 해야하며, 분산환경에서 나온 결과를 다시 합치고 나누고하는 등의 복잡한 처리가 필요한 경우가 많이 생길 것 입니다.   
    
-   정리하면 위와 같은 경우를 Tensorflow 를 이용해서 처리해나가는 것입니다. 이런 맥락에서 보면 Python 에서 Tensorflow 라이브러리를 써서 짜는 코드들은 **TensorFlow의 Core Execution Engine을 어떻게 사용할 것이라는 계획서를 Python으로 적어내는 것과 비슷합니다**. 그렇다면 이런 상황과 프로세스에 적합한 프로그래밍 하기 위해 보통 프로그래밍 방식과는 조금 다른 부분이 필요하게 됩니다. 여기에서 TensorFlow의 특징이자 저 같은 초보자들이 햇갈려하는 포인트가 나오는데요, 바로 코딩하는 부분과 실행 단이 독립적으로 분리되어 있습니다. 바로바로 실행이 되는 Python과 달리 tensorflow에서 코드들은 **Session**이라는 환경 아래에서만 실행됩니다.
+   정리하면 위와 같은 경우를 Tensorflow 를 이용해서 처리해나가는 것입니다. 이런 맥락에서 보면 Python 에서 Tensorflow 라이브러리를 써서 짜는 코드들은 **TensorFlow의 Core Execution Engine을 어떻게 사용할 것이라는 계획서를 Python으로 적어내는 것과 비슷합니다**.   
+   그렇다면 이런 상황과 프로세스에 적합한 프로그래밍 하기 위해 보통 프로그래밍 방식과는 조금 다른 부분이 필요하게 됩니다. 여기에서 TensorFlow의 특징이자 저 같은 초보자들이 햇갈려하는 포인트가 나오는데요, 바로 코딩하는 부분과 실행 단이 독립적으로 분리되어 있습니다. 바로바로 실행이 되는 Python과 달리 tensorflow에서 코드들은 **Session**이라는 환경 아래에서만 실행됩니다.
  
   위에서 언급한 Tensorflow를 어떻게 어떻게 쓰겠다라는 계획서를 Python으로 짜기 위해서 Tensorflow에서는 Graph라는 것을 사용합니다. 계획서에 담겨있는 여러 계획(작동)들을 **operation**이라고 하고 이 계획서를 **graph**라고 볼 수 있습니다.
    
@@ -483,7 +483,7 @@ for op_input in last_operation.inputs: print(op_input)
    ![operation_node](https://jihobak.github.io/img/deeplearningninja/operation_node.png)   
    
    
-   주의 해야 할 것이 하나 더 있습니다. tensorflow에서 tf.Variable 같은 값이 변할 수 있는 변수를 선언을 하면 항상 Session 시작전에 graph에 들어있는 모든 변수들을 초기화해줘야 한다는 것입니다. 실제로 tf.Variable()로 선언을 했던 weight을 살펴보면 초기화전에 weight 을 보면 0.800000011920929로 0.8 과 달리 차이가 조금 나 있습니다.   
+   주의 해야 할 것이 하나 더 있습니다. tensorflow에서 tf.Variable 같은 값이 변할 수 있는 변수를 선언을 하면 항상 Session 시작전에 graph에 들어있는 모든 변수들을 초기화해줘야 한다는 것입니다. 실제로 tf.Variable()로 선언을 했던 weight초기화전에 값을 보면 0.800000011920929로 0.8 과 달리 차이가 조금 나 있습니다.   
    
    
    
@@ -529,9 +529,9 @@ see.run(output_value)
 ```
     
  훨씬 0.8에 가까워 졌다는 것을 볼 수 있습니다.(딱 정확히 0.8은 아니지만 32-bit float에서 최대한 0.8에 가까운 값입니다.) 반드시 초기화 해줘야합니다. 안 하고 싶다고해도 초기화 하지 않고 실행한다면 **FailedPreconditionError**을 출력해서 실행이 되지 않습니다.   
+
  
- 
- 자 이렇게 벌써 인공뉴런을 만들어 보신 것입니다. 지금은 input , output이 몇 개 안되지만 신경망처럼 수많은 인풋과 아웃풋이  필요한경우 알아 보기 힘들것입니다. 가뜩이나 Session아래에서 실행되는 탓에 바로바로 확인하기 힘든데요. 그래서 Tensorflow에서는 이를 위해 graph를 시각화해주는 Tensorboard라는 것을 제공합니다. 아래처럼 Tensor들이 어디로 어떻게 들어와서 나가는지 쉽게 볼 수 있게 해줍니다.
+ 자 이렇게 벌써 인공뉴런을 만들어 보신 것입니다. 지금은 input , output이 몇 개 안되지만 신경망처럼 수많은 인풋과 아웃풋이  필요한경우 알아 보기 힘들것입니다. 가뜩이나 Session아래에서 실행되는 탓에 바로바로 확인하기 힘든데요. 그래서 Tensorflow에서는 이를 위해 graph를 시각화해주는 **Tensorboard**라는 것을 제공해 줍니다. 아래처럼 Tensor들이 어디로 어떻게 들어와서 나가는지 쉽게 볼 수 있습니다.
     
     
   
@@ -786,4 +786,4 @@ for i in range(100):
    
 ---
 
-  p.s) 올해 9월부터 대구 경북대학교 근처에서 머신러닝, 딥러닝과 관련해서 스터디 모임을 만들어보고자 합니다. 장소는 후원을 받기로 확정이 되었습니다.  같이 으쌰으쌰해서 열심히 공부해보실분 이나 이미 어느정도 실력으로 쌓고 넓은 아량으로 도움 주실분도 환영입니다. 페이스북 메세지로 연락을 주시면 감사하겠습니다 !! ^^;;
+  p.s) 올해 9월부터 대구 경북대학교 근처에서 머신러닝, 딥러닝과 관련해서 스터디 모임을 만들어보고자 합니다. 장소는 후원을 받기로 확정이 되었습니다.  같이 으쌰으쌰해서 열심히 공부해보실분 뿐만 아니라 이미 어느정도 실력으로 쌓고 넓은 아량으로 도움 주실분도 환영입니다. 페이스북 메세지로 연락을 주시면 감사하겠습니다 !! ^^;;
