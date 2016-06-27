@@ -637,17 +637,19 @@ sess.run(w)
 # 0.75999999 		#about 0.76
 ```
 
-참고로 이 과정을 loss를 다시 뒤로 전파한다고 해서 **backpropagation**이라고 합니다. 반대로 처음 부터 계산해나간 과정을 **forwardpropagation**이라고 합니다.
+참고로 이 과정을 loss를 다시 뒤로 전파한다고 해서 **backpropagation**이라고 합니다. 반대로 처음 부터 계산해나간 과정을 **forwardpropagation**이라고 합니다.   
 
-
-// 사진 첨부
-  
-  
-  
-  머신러닝의 학습은 이 앞으로 왔다 뒤로 갔다가 하는 **forwardpropagation** 과 **backpropagation**의 반복이라고 할 수있습니다. 아까 저희는 한 번 왔다갔다 한 것이지 학습이 끝난것은 아닙니다. 아직 출력값이 0이 되려면 한 참 멀었습니다.그렇다면 방금 한 과정을 계속해서 반복해야 할텐데 아까 처럼 힘들게 반복할 필요는 없습니다. 위 training 과정을 100번 하고 싶다면 아래와같이 코딩하면 됩니다. 
-  
-  
-  
+   
+   
+   
+   ![forwardbackpro](https://jihobak.github.io/img/deeplearningninja/forwardbackpro.png)   
+   
+   
+   머신러닝의 학습은 이 앞으로 왔다 뒤로 갔다가 하는 **forwardpropagation** 과 **backpropagation**의 반복이라고 할 수있습니다. 아까 저희는 한 번 왔다갔다 한 것이지 학습이 끝난것은 아닙니다. 아직 출력값이 0이 되려면 한 참 멀었습니다.그렇다면 방금 한 과정을 계속해서 반복해야 할텐데 아까 처럼 힘들게 반복할 필요는 없습니다. 위 training 과정을 100번 하고 싶다면 아래와같이 코딩하면 됩니다. 
+   
+   
+   
+   
 ```python
 
 train_step = tf.train.GradientDescentOptimizer(0.025).minimize(loss)
