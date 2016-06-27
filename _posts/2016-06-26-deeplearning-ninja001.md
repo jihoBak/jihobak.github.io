@@ -5,7 +5,7 @@ title: DeepLearning Ninja001
 subtitle: Hello Tensorflow
 date: 2016-6-26
 fb-img: 'https://colleensharen.files.wordpress.com/2013/09/deep-learning.jpg'
-bigimg: 'https://jihobak.github.io/img/deeplearningninja/nn.jepg'
+bigimg: /img/deeplearningninja/nn.jepg
 ---
 # Hello Tensorflow   
 
