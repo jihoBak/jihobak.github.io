@@ -389,7 +389,7 @@ sess.run(input)
    
    
    
-## '초간단' Tensorflow 뉴런 만들어보기
+   ## '초간단' Tensorflow 뉴런 만들어보기
   
    
    
