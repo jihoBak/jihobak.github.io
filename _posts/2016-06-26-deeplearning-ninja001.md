@@ -22,13 +22,23 @@ date: 2016-6-26
    
    
 - 머신러닝?
+
 - 이름만 알아도 반은 안다.Tensor 와 Flow를 알아보자
 	- TensorFlow 특징(graph, Session)
-    - TensorBoard
-- TensofFlow로 심플한 뉴런 만들어보기
- 
- 
-  본격적인 설명으로 들어가기전 머신러닝과 한 가지 컨셉부터 분명히 가지고가는게 좋을 것 같습니다. Data-Driven Approach 입니다. 예를들어 보겠습니다. 남자와 여자의 사진을 보고 성별을 구분하는 프로그램을 만들어라는 과제가 주어 졌다면, 어떤 생각이 드시나요? 남자는 머리가 짧으면 남자라고 정의할까요? 이렇게 되면 머리가 짧은 여자분은 또 머리가 긴 남자분의 사진이 주어지면 컴퓨터는 틀리게 되죠. 사과와 오렌지를 구분하는 과제였다면 빨간것은 사과라고 정의 할까요? 그러면 초록색 사과는 어떻게 될까요? 이렇게 현실적으로 남자와 여자의 특징, 사과와 오렌지의의 특정을 모두 정의하긴 너무나 어렵습니다.
+    - TensorBoard로 사용해보기
+    
+- TensofFlow로 간단한 뉴런 만들어보기
+	- 왜 뉴런인가?
+    - forwardpropagation 과 backpropagation
+    
+    
+  
+  
+ ---
+  
+   
+   
+   본격적인 설명으로 들어가기전 머신러닝과 한 가지 컨셉부터 분명히 가지고가는게 좋을 것 같습니다. Data-Driven Approach 입니다. 예를들어 보겠습니다. 남자와 여자의 사진을 보고 성별을 구분하는 프로그램을 만들어라는 과제가 주어 졌다면, 어떤 생각이 드시나요? 남자는 머리가 짧으면 남자라고 정의할까요? 이렇게 되면 머리가 짧은 여자분은 또 머리가 긴 남자분의 사진이 주어지면 컴퓨터는 틀리게 되죠. 사과와 오렌지를 구분하는 과제였다면 빨간것은 사과라고 정의 할까요? 그러면 초록색 사과는 어떻게 될까요? 이렇게 현실적으로 남자와 여자의 특징, 사과와 오렌지의의 특정을 모두 정의하긴 너무나 어렵습니다.
  
 
  이처럼 남자는 머리가 짧고, 키가 크며…  사과는 빨갛며...
@@ -311,12 +321,12 @@ attr {
    
    학습을 해나간다는 것은 무엇이 계속 변해간다는 것이겠죠? 이 변하는 부분을 담당할 부분을 weight라고 합니다. 계속 변하는 값이므로 tf.constant로 선언한것과달리 tf.Variable 을 사용합니다.
    
-   ```python 
    
    
-   weight = tf.Variable(0.8)
+```python
+weight = tf.Variable(0.8)
    
-   ```  
+```  
    
    
   
@@ -335,49 +345,57 @@ attr {
   ```
   
   
-  아까 input을 만드는 Const를 빼면 weight을 선언함으로써 4개의 operation들이 생겼습니다. Python 과 Tensorflow의 차이가 이제 확연이 느껴지실 것 입니다.조금더 직관적으로 이해하기위해서 연산을 해보겠습니다. 뉴런이 출력할 output 입니다.  
+  아까 input을 만드는 Const를 빼면 weight을 선언함으로써 4개의 operation들이 생겼습니다. Python 과 Tensorflow의 차이가 이제 확연이 느껴지실 것 입니다.조금 더 직관적으로 이해하기위해서 연산을 해보겠습니다. 뉴런이 출력할 output 입니다.  
     
     
     
     
     
   
-  ```python
-  output_value = weight * input
+```python
+output  = weight * input
   
-  ```
-    
-    자 이제 graph에는 총 6개의 operation들이 들어 있을 것입니다. 그 중에 마지막은 weight * input 을 나타내는 곱하기 operation일 것입니다.
-    
-    
-    
-    ```python
-    last_operation = graph.get_operations()[-1]
-    last_operation.name
-    # >>> 'mul'
-  	for op_input in last_operation.inputs: print(op_input)
-    #  Tensor("Variable/read:0", shape=(), dtype=float32)
-    #  Tensor("Const:0", shape = (), dtype=float32)
-  	```
-    
-    
-    그림으로 보면 이렇겠죠.
-    
-    
-    // 그림 추가
+```
+  
+  
+  
+  자 이제 graph에는 총 6개의 operation들이 들어 있을 것입니다. 그 중에 마지막은 weight * input 을 나타내는 곱하기 operation일 것입니다.
+  
+  
+  
+  
     
     
     
-    주의 해야 할 것이 하나 더 있습니다. tensorflow에서 tf.Variable 같은 어떤 변할 수도 있는 것을 선언을 하면 항상 Session 시작전에 graph에 들어있는 모든 변수들을 초기화해줘야 한다는 것입니다. 실제로 tf.Variable()로 선언을 했던 weight을 살펴보면 초기화전에 weight 을 보면 지정해준 0.8 과 달리 차이가 조금 나 있습니다.
+ ```python
+last_operation = graph.get_operations()[-1]
+last_operation.name
+# 'mul'
+for op_input in last_operation.inputs: print(op_input)
+#  Tensor("Variable/read:0", shape=(), dtype=float32)
+#  Tensor("Const:0", shape = (), dtype=float32)
+```
     
-    ```python
-    name: "Variable/initial_value"
-    op: "Const"
-    attr {
-    	key: "dtype"
-        value {
-        	type: DT_FLOAT
-        }
+    
+그림으로 보면 이렇겠죠.
+    
+    
+// 그림 추가
+    
+    
+    
+ 주의 해야 할 것이 하나 더 있습니다. tensorflow에서 tf.Variable 같은 어떤 변할 수도 있는 것을 선언을 하면 항상 Session 시작전에 graph에 들어있는 모든 변수들을 초기화해줘야 한다는 것입니다. 실제로 tf.Variable()로 선언을 했던 weight을 살펴보면 초기화전에 weight 을 보면 지정해준 0.8 과 달리 차이가 조금 나 있습니다.
+ 
+
+    
+```python
+name: "Variable/initial_value"
+op: "Const"
+attr {
+   key: "dtype"
+   value {
+        type: DT_FLOAT
+       }
     }
     attr {
     	key: "value"
@@ -390,53 +408,226 @@ attr {
             }
         }
     }
-    ```
+```
+
     
-    초기화를 하고 Session에서 출력해보겠습니다.  
+초기화를 하고 Session에서 출력해보겠습니다. 
+
       
-    ```python
-    init = tf.initialize_all_variables()
-    sess.run(init)
-    see.run(output_value)
-    # 0.80000001
-    ```
+```python
+
+init = tf.initialize_all_variables()
+sess.run(init)
+see.run(output_value)
+# 0.80000001
+```
     
-     훨씬 0.8에 가까워 졌다는 것을 볼 수 있습니다.(딱 정확히 0.8은 아니지만 32-bit float에서 최대한 0.8에 가까운 값입니다.) 반드시 초기화 해줘야합니다. 안 하고 싶다고해도 초기화 하지 않고 실행한다면 **FailedPreconditionError**을 출력해서 실행이 되지 않습니다. 
+훨씬 0.8에 가까워 졌다는 것을 볼 수 있습니다.(딱 정확히 0.8은 아니지만 32-bit float에서 최대한 0.8에 가까운 값입니다.) 반드시 초기화 해줘야합니다. 안 하고 싶다고해도 초기화 하지 않고 실행한다면 **FailedPreconditionError**을 출력해서 실행이 되지 않습니다. 
      
      
-     
+  
   자 이렇게 벌써 인공뉴런을 만들어 보신 것입니다. 지금은 input , output이 몇 개 안되지만 신경망처럼 수많은 인풋과 아웃풋이  필요한경우 알아 보기 힘들것입니다. 가뜩이나 Session아래에서 실행되는 탓에 바로바로 확인하기 힘든데요. 그래서 Tensorflow에서는 이를 위해 graph를 시각화해주는 Tensorboard라는 것을 제공합니다. 아래처럼 Tensor들이 어디로 어떻게 들어와서 나가는지 쉽게 볼 수 있게 해줍니다.
     
     
   
   ![tensorboard](https://www.tensorflow.org/versions/r0.8/images/graph_vis_animation.gif)
   
+
+  
+  
   
   텐서보드를 활용해 저희가 만든 뉴런도 시각화 해보겠습니다.
+  // 완성결과물
+  
+  
+  현재 뉴런을 Tensorboard를 이용해서 시각화해보면 위와 같은 모습입니다. Tensorboard에서는 시각화 결과물을 보고  훨씬 더 알아 보기 쉽도록 **이름**을 설정해줘야 하는데요. 나중에 TensorBoard에서도 보기편하도록 다시 input, weight, output을 설정해보겠습니다.(여기서 이름을 정해주는게 원래 Python에서 변수이름을 정해 주는 것과 비슷하다고 볼 수 있습니다.)
   
   
   
   
+```python 
+
+x = tf.constant(1.0, name='input')
+w = tf.Variable(0.8, name='weight')
+y = tf.mul(w, x, name = 'output')
+
+```
+
+  
+  이름을 지었으니 이제 TensorBoard를 위한 파일을 만들어야 하는데요. 이를 위해 Tensorflow의 SummaryWriter라는 것이 필요합니다. 혹시 Python으로 csv를 다뤄보셨으면 csv.writer()와 비슷하게 생각하시면 될 것 같습니다. 
+  
+```python
+
+
+summary_writer = tf.train.SummaryWriter('log_simple_graph', sess.graph)
+```
+
+  
+  SummaryWriter 첫번째 인자에는 파일이 담겨질 폴더명이 두번째인자에는 graph가 오게 됩니다. 해당 폴더가 없으면 넘어온 인자값으로 폴더가 새로 생깁니다. 이제 log_simple_graph라는 폴더에 저희 sess에 있는 graph를 기록했습니다. TensorBoard를 실행시키시고 싶으시면 이제 커맨드라인으로 가셔서
+  
+```python
+$ tensorboard --logdir=log_simple_graph
+```
+  
+  위 명령어를 치시고 브라우저에서 **localhost:6006/#graphs** 로 들어가 보시면 시각화 된 것을 보실 수 있습니다.
+  
+  
+  
+## 이제 머신러닝, 딥러닝에서 말하는 러닝을 해보도록 하겠습니다.
+
+  
+  뉴런은 입력된 input x에 weight w 를 곱해서 y라는 ouput을 만들어내는 뉴런입니다. 이때 뉴런이 맞춰야할 값을 target라고 하고 값은 0 이라고 가정하겠습니다(1로 설정 할 수도, 100으로 설정할 수도 있습니다...).  target이 0 이니 최종적으로 학습이 잘 끝나면 이 뉴런은 입력값이 1일때 0을 만들어내는 뉴런이 되어야 합니다. 현재는 0.8 * 1 = 0.8 으로 0.8을 출력하는 뉴런입니다.
+  
+  
+  그렇다면 이 뉴런이 잘 하고있다, 즉 뉴런의 성능을 측정하러면 어떤 값을 사용해야 할까요? 정답인 target 0과 현재 출력값 0.8의 차이가 작아질 수록 뉴런이 제 역할을 다 하고 있다고 볼 수 있습니다. 그래서 이 차이인 ouput - target(0.8 - 0 = 0 )을 하나의 지표로 사용하고 머신러닝에서는 loss 또는 cost 함수라고 합니다. 실제로는 제곱을 해주어 output - target 이 loss로 쓰입니다.
+  
+  
+  구체적으로 학습은 무엇을 의미할까요? 현재 뉴런을 살펴보면 w*x = y, 들어온 input x에 weight w를 곱해주는게 뉴런의 역할입니다. 여기에서 뉴런이 조절할 수 있는 값은 weight 밖에 없습니다. 이 뉴런이 출력하는 output을 우리가 원하는 정답인 target 값에 가능한한 가깝게 **weight**값을 바꿔나가는 과정이 러닝에 해당합니다. 즉 다시 말하면 **뉴런**을 위에서 말한 **loss**를 **최소화** 시키는 뉴런으로 최적화 시키는 과정이 러닝에 해당하는 것입니다. 또한 이 과정을 학습한다 또는 트레이닝 시킨다고도 하는데, 이 학습시키는데 사용한 데이터를 학습데이터 train_data 라고 부릅니다. 여기에서는 input 1과 정답에해당하는 target 0이 학습데이터가 되겟습니다.
+  
+  
+  
+```python
+target = tf.constant(0.0)
+loss = (y - target)**2
+
+```
+
+이어지는 질문으로 그러면 어떻게 loss를 최소화하는 weight으로 바꾸는지, 즉 뉴런을 어떻게 최적화하는가?가 궁금하실 것입니다.
+여기서 보통 **GradientDescent**라는 방법이 사용됩니다.(여기에서 GradientDescent를 다루지는 않겠습니다.) 물론  tensorflow에서는 이부분을 하드코딩할 필요없이 한 줄이면 됩니다.
+  
+  
+  
+```python
+optim = tf.train.GradientDescentOptimizer(learning_rate = 0.025)
+```
+
+  
+  위의 learning_rate를 간략히 설명을 드리자면 얼마나 빠르게(많이) weight을 변화시킬것인가, 얼마나 빠르게 뉴런을 최적화 시킬것인가 하는 속도를 조절하는 값입니다. 무조건 빠르면 좋을 것 같지만 이 learning_rate값이 너무 빨라버리면 탈이 납니다. 그래서 너무 크지 않도록 적정한 값을 잘 설정해줘야합니다. 여기선 0.025로 설정했습니다.
+  
+  
+```python
+grads_and_vars = optim.compute_gradients(loss)
+sess.run(tf.initialize_all_variables())
+sess.run(grads_and_vars[1][0])
+# 1.6
+```
+  
+  
+  
+  자 위는 Gradient 값을 출력한 것입니다.(loss를 weight으로 미분한 값)
+  식으로 보면 2*0.8 = 1.6 입니다. 뉴런은 weight는 이 Gradient 값 1.6에다가 learning_rate를 곱한 1.6 * 0.025 = 0.04 만큼 변하게 됩니다(작아집니다). weight을 변화(최적화)시켜 보겠습니다.
+  
+  
+```python
+sess.run(optim.apply_gradients(grads_and_vars))
+sess.run(w)
+# 0.75999999 		#about 0.76
+```
+
+참고로 이 과정을 loss를 다시 뒤로 전파한다고 해서 **backpropagation**이라고 합니다. 반대로 처음 부터 계산해나간 과정을 **forwardpropagation**이라고 합니다.
+
+
+// 사진 첨부
+  
+  
+  
+  머신러닝의 학습은 이 앞으로 왔다 뒤로 갔다가 하는 **forwardpropagation** 과 **backpropagation**의 반복이라고 할 수있습니다. 아까 저희는 한 번 왔다갔다 한 것이지 학습이 끝난것은 아닙니다. 아직 출력값이 0이 되려면 한 참 멀었습니다.그렇다면 방금 한 과정을 계속해서 반복해야 할텐데 아까 처럼 힘들게 반복할 필요는 없습니다. 위 training 과정을 100번 하고 싶다면 아래와같이 코딩하면 됩니다. 
+  
+  
+  
+```python
+
+train_step = tf.train.GradientDescentOptimizer(0.025).minimize(loss)
+for i in range(100):
+	sess.run(train_step)
+#
+sees.run(y)
+# 0.0044996012
+```
+
+output y 까지 출력해 보았습니다. 자 output이 이제 원하는 0에 가까워 진것을 확인 할 수 있습니다.
+  
+  
+  
+## 학습과정 , TensorBoard로 보기
+  
+  
+  아까 위처럼 트레이닝을 할때 잘되고있는지, 우리가 원하는 값을 출력하도록 뉴런이 잘 변하고있는지 확인을 하면서 작업을 해야하는데요. 예를들어 트레이닝과정에서 출력값을 확인 할 수 있는데요. 확인 하려면 아래와 같이 하면 됩니다.
+  
+  
+```python
+sess.run(tf.initialize_all_variables())
+for i in range(100):
+	print("학습 횟수 {}, 출력값: {}".format(i, sess.run(y)))
+    sess.run(train_step)
+
+#
+# 학습 횟수 0, 출력값: 0.800000011920929
+# 학습 횟수 1, 출력값: 0.759999990463
+# ...
+# ...    
+# 학습 횟수 98, 출력값: 0.00524811353534
+# 학습 횟수 99, 출력값: 0.00498570781201
+
+```
+  
+  자 그런데 이렇게 하면 직관적이지 않으니 여기서 TensorBoard를 활용해서 위 결과를 그래프로 보면 훨씬 효과적일 것입니다.
   
   
   
   
+```python
+
+summary_y = tf.scalar_summary('output', y)
+summary_writer = tf.train.SummaryWriter('log_simple_stat')
+for i in range(100):
+	summary_str = sess.run(summary_y)
+    summary_writer.add_summary(summary_str, i)
+    sess.run(train_step)
+
+
+
+```
   
-  
-  
+ 설명을 드리자면 , 우리가 확인하고 싶은 값 y를 계산하는 operation을 summary_y에 담아서 트레이닝 한 번 할때마다 tensorflow의 SummaryWriter를 통해 log_simple_stat이라는 디렉토리 안에 쓴다고 이해하시면 될 것 같습니다. Session 에서 summary_y가 실행되면 위에서 말한 tensorflow에서 사용하는 protocol buffer string 형태가 return 되서 summary_str에 저장이 될 것입니다.
  
  
-     
-     
-    
-      
-    
-    
-    
-    
-    
-    
-    
-    
-    
+ 출력값 y 를 TensorBoard로 시각화한 결과 입니다.
+ 
+ 
+ 
+ // 출력 결과
    
+   
+   
+   최종 소스 입니다. 
+   
+   
+   
+ ```python 
+ ```
+ ---
+  
+  
+  
+  최대한 쉽게 써보려고 노력은 했는데 어떨지는 잘 모르겠습니다 ^^; 제가 설명을 잘 못한 부분이 있을 수도 있습니다. 혹시 오류나 지적할 부분이 있으시면 댓글로 알려주시면 감사하겠습니다 ! 그리고 혹시나 이 까지 다 해보시고 흥미를 가지셨다면 페이스북 그룹 TensorFlowKR을 운영하고 계시는 홍콩과기대 김성훈 교수님의 모두를 위한 머신러닝/딥러닝 강의보시길 추천드립니다! 처음 부터 많은 수식과 이론에... 자칫하면 학습의욕을 떨어질수도 있는데요 수학이나 컴퓨터 공학적인 지식이 없이도 쉽게 볼수 있도록 만드셨습니다. 저 또한 많이 배웠고 너무 감사드린다고 말씀드리고 싶습니다. 다음으로 너무나 유명한 바이두의 Andrew Ng님의 머신러닝 강의, 스탠포드 대학교의 cs231n, cs224d 마지막으로 또 하나의 강의를 추천 드린다면 MIT Patrick Henry Winston 교수님의 Artificial Intelligence 강의 입니다. 설명이 간결하고 쉽게 가르쳐 주십니다. 아래에 링크를 적어두겠습니다.
+  
+  
+  끝으로 읽어주셔서 정말 감사드립니다.
+  
+  
+    
+- [모두를 위한 머신러닝/딥러닝 강의](http://hunkim.github.io/ml/)
+- [Machine Learning by Andrew Ng](https://www.coursera.org/learn/machine-learning/)
+- [CS231n: Convolutional Neural Networks for Visual Recognition](http://cs231n.stanford.edu/)
+- [CS224d: Deep Learning for Natural Language Processing](http://cs224d.stanford.edu/)
+- [Artificial Intelligence](http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/)
+  
+  
+
+
+  
+  
+  
+  
+
