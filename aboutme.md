@@ -1,7 +1,7 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: Enjoy your travel and always cross borders
 bigimg: /img/piperHwawei.jpg
 ---
 
